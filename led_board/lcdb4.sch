@@ -1,0 +1,577 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:gtparts
+LIBS:lcdb4-cache
+EELAYER 25 0
+EELAYER END
+$Descr USLetter 11000 8500
+encoding utf-8
+Sheet 1 1
+Title "LED Board"
+Date "August 8th, 2015"
+Rev "4"
+Comp "Timecorp"
+Comment1 "Gabriel Taubman"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L TLC5916 U1
+U 1 1 55C65C8C
+P 5675 5750
+F 0 "U1" H 5675 5300 60  0000 C CNN
+F 1 "TLC5916" H 5675 6200 60  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 5675 6000 60  0001 C CNN
+F 3 "" H 5675 6000 60  0000 C CNN
+	1    5675 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L LTD-5621AG 7SEG1
+U 1 1 55C66107
+P 4375 3800
+F 0 "7SEG1" H 4375 3300 60  0000 C CNN
+F 1 "LTD-5621AG" V 4375 3800 60  0000 C CNN
+F 2 "Displays_7-Segment:LTD-5621AG" H 4375 3900 60  0001 C CNN
+F 3 "" H 4375 3900 60  0000 C CNN
+	1    4375 3800
+	0    -1   -1   0   
+$EndComp
+Text GLabel 4175 4325 3    60   Input ~ 0
+SEGC
+Text GLabel 4075 4675 3    60   Input ~ 0
+SEGD
+Text GLabel 3975 4325 3    60   Input ~ 0
+SEGE
+Text GLabel 4575 4325 3    60   Input ~ 0
+SEGG
+Text GLabel 3975 3275 1    60   Input ~ 0
+SEGF
+Text GLabel 4075 2975 1    60   Input ~ 0
+SEGG
+Text GLabel 4175 3275 1    60   Input ~ 0
+SEGA
+Text GLabel 4275 2975 1    60   Input ~ 0
+SEGB
+Text GLabel 4575 3275 1    60   Input ~ 0
+SEGF
+Text GLabel 4675 2975 1    60   Input ~ 0
+SEGA
+Text GLabel 4775 3275 1    60   Input ~ 0
+SEGB
+Text GLabel 4375 4325 3    60   Input ~ 0
+SEGE
+Text GLabel 4475 4675 3    60   Input ~ 0
+SEGD
+Text GLabel 4675 4675 3    60   Input ~ 0
+SEGC
+Text GLabel 6350 5400 2    60   Input ~ 0
+SEGA
+Text GLabel 6650 5500 2    60   Input ~ 0
+SEGB
+Text GLabel 6350 5600 2    60   Input ~ 0
+SEGC
+Text GLabel 6650 5700 2    60   Input ~ 0
+SEGD
+Text GLabel 6650 5900 2    60   Input ~ 0
+SEGF
+Text GLabel 6350 6000 2    60   Input ~ 0
+SEGG
+Text GLabel 6350 5800 2    60   Input ~ 0
+SEGE
+Text GLabel 6650 6100 2    60   Input ~ 0
+SEGDP
+Text GLabel 4275 4675 3    60   Input ~ 0
+SEGDP
+Text GLabel 4775 4325 3    60   Input ~ 0
+SEGDP
+$Comp
+L LTD-5621AG 7SEG2
+U 1 1 55C672C9
+P 5700 3825
+F 0 "7SEG2" H 5700 3325 60  0000 C CNN
+F 1 "LTD-5621AG" V 5700 3825 60  0000 C CNN
+F 2 "Displays_7-Segment:LTD-5621AG" H 5700 3925 60  0001 C CNN
+F 3 "" H 5700 3925 60  0000 C CNN
+	1    5700 3825
+	0    -1   -1   0   
+$EndComp
+Text GLabel 5500 4350 3    60   Input ~ 0
+SEGC
+Text GLabel 5400 4700 3    60   Input ~ 0
+SEGD
+Text GLabel 5300 4350 3    60   Input ~ 0
+SEGE
+Text GLabel 5900 4350 3    60   Input ~ 0
+SEGG
+Text GLabel 5300 3300 1    60   Input ~ 0
+SEGF
+Text GLabel 5400 3000 1    60   Input ~ 0
+SEGG
+Text GLabel 5500 3300 1    60   Input ~ 0
+SEGA
+Text GLabel 5600 3000 1    60   Input ~ 0
+SEGB
+Text GLabel 5900 3300 1    60   Input ~ 0
+SEGF
+Text GLabel 6000 3000 1    60   Input ~ 0
+SEGA
+Text GLabel 6100 3300 1    60   Input ~ 0
+SEGB
+Text GLabel 5700 4350 3    60   Input ~ 0
+SEGE
+Text GLabel 5800 4700 3    60   Input ~ 0
+SEGD
+Text GLabel 6000 4700 3    60   Input ~ 0
+SEGC
+Text GLabel 5600 4700 3    60   Input ~ 0
+SEGDP
+Text GLabel 6100 4350 3    60   Input ~ 0
+SEGDP
+$Comp
+L LTD-5621AG 7SEG3
+U 1 1 55C67315
+P 6975 3825
+F 0 "7SEG3" H 6975 3325 60  0000 C CNN
+F 1 "LTD-5621AG" V 6975 3825 60  0000 C CNN
+F 2 "Displays_7-Segment:LTD-5621AG" H 6975 3925 60  0001 C CNN
+F 3 "" H 6975 3925 60  0000 C CNN
+	1    6975 3825
+	0    -1   -1   0   
+$EndComp
+Text GLabel 6775 4350 3    60   Input ~ 0
+SEGC
+Text GLabel 6675 4700 3    60   Input ~ 0
+SEGD
+Text GLabel 6575 4350 3    60   Input ~ 0
+SEGE
+Text GLabel 7175 4350 3    60   Input ~ 0
+SEGG
+Text GLabel 6575 3300 1    60   Input ~ 0
+SEGF
+Text GLabel 6675 3000 1    60   Input ~ 0
+SEGG
+Text GLabel 6775 3300 1    60   Input ~ 0
+SEGA
+Text GLabel 6875 3000 1    60   Input ~ 0
+SEGB
+Text GLabel 7175 3300 1    60   Input ~ 0
+SEGF
+Text GLabel 7275 3000 1    60   Input ~ 0
+SEGA
+Text GLabel 7375 3300 1    60   Input ~ 0
+SEGB
+Text GLabel 6975 4350 3    60   Input ~ 0
+SEGE
+Text GLabel 7075 4700 3    60   Input ~ 0
+SEGD
+Text GLabel 7275 4700 3    60   Input ~ 0
+SEGC
+Text GLabel 6875 4700 3    60   Input ~ 0
+SEGDP
+Text GLabel 7375 4350 3    60   Input ~ 0
+SEGDP
+$Comp
+L CONN_01X06 P2
+U 1 1 55C6744A
+P 5700 2000
+F 0 "P2" H 5700 2350 50  0000 C CNN
+F 1 "DIGIT_POWER" V 5800 2000 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 5700 2000 60  0001 C CNN
+F 3 "" H 5700 2000 60  0000 C CNN
+	1    5700 2000
+	0    -1   -1   0   
+$EndComp
+Text GLabel 4375 3275 1    60   Input ~ 0
+DIG1
+Text GLabel 4475 2975 1    60   Input ~ 0
+DIG2
+Text GLabel 5700 3300 1    60   Input ~ 0
+DIG3
+Text GLabel 5800 3000 1    60   Input ~ 0
+DIG4
+Text GLabel 6975 3300 1    60   Input ~ 0
+DIG5
+Text GLabel 7075 3000 1    60   Input ~ 0
+DIG6
+Text GLabel 5400 2300 3    60   Input ~ 0
+DIG1
+Text GLabel 5525 2300 3    60   Input ~ 0
+DIG2
+Text GLabel 5650 2300 3    60   Input ~ 0
+DIG3
+Text GLabel 5775 2300 3    60   Input ~ 0
+DIG4
+Text GLabel 5900 2300 3    60   Input ~ 0
+DIG5
+Text GLabel 6025 2300 3    60   Input ~ 0
+DIG6
+$Comp
+L GND #PWR01
+U 1 1 55C67C19
+P 4250 5400
+F 0 "#PWR01" H 4250 5150 50  0001 C CNN
+F 1 "GND" H 4250 5250 50  0000 C CNN
+F 2 "" H 4250 5400 60  0000 C CNN
+F 3 "" H 4250 5400 60  0000 C CNN
+	1    4250 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L VDD #PWR02
+U 1 1 55C67C37
+P 4250 6100
+F 0 "#PWR02" H 4250 5950 50  0001 C CNN
+F 1 "VDD" H 4250 6250 50  0000 C CNN
+F 2 "" H 4250 6100 60  0000 C CNN
+F 3 "" H 4250 6100 60  0000 C CNN
+	1    4250 6100
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C1
+U 1 1 55C67D78
+P 4375 5750
+F 0 "C1" H 4400 5850 50  0000 L CNN
+F 1 "0.1uF" H 4075 5750 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 4413 5600 30  0001 C CNN
+F 3 "" H 4375 5750 60  0000 C CNN
+	1    4375 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 55C68103
+P 4550 5775
+F 0 "R1" V 4630 5775 50  0000 C CNN
+F 1 "1000" V 4550 5775 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 4480 5775 30  0001 C CNN
+F 3 "" H 4550 5775 30  0000 C CNN
+	1    4550 5775
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6225 5400 6350 5400
+Wire Wire Line
+	6225 5500 6650 5500
+Wire Wire Line
+	6225 5600 6350 5600
+Wire Wire Line
+	6225 5700 6650 5700
+Wire Wire Line
+	6225 5800 6350 5800
+Wire Wire Line
+	6225 5900 6650 5900
+Wire Wire Line
+	6225 6000 6350 6000
+Wire Wire Line
+	6225 6100 6650 6100
+Wire Wire Line
+	3975 4325 3975 4250
+Wire Wire Line
+	4075 4250 4075 4675
+Wire Wire Line
+	4175 4325 4175 4250
+Wire Wire Line
+	4275 4250 4275 4675
+Wire Wire Line
+	4375 4325 4375 4250
+Wire Wire Line
+	4475 4250 4475 4675
+Wire Wire Line
+	4575 4325 4575 4250
+Wire Wire Line
+	4675 4675 4675 4250
+Wire Wire Line
+	4775 4325 4775 4250
+Wire Wire Line
+	3975 3350 3975 3275
+Wire Wire Line
+	4075 3350 4075 2975
+Wire Wire Line
+	4175 3350 4175 3275
+Wire Wire Line
+	4275 3350 4275 2975
+Wire Wire Line
+	4575 3350 4575 3275
+Wire Wire Line
+	4675 3350 4675 2975
+Wire Wire Line
+	4775 3350 4775 3275
+Wire Wire Line
+	5300 4350 5300 4275
+Wire Wire Line
+	5400 4275 5400 4700
+Wire Wire Line
+	5500 4350 5500 4275
+Wire Wire Line
+	5600 4275 5600 4700
+Wire Wire Line
+	5700 4350 5700 4275
+Wire Wire Line
+	5800 4275 5800 4700
+Wire Wire Line
+	5900 4350 5900 4275
+Wire Wire Line
+	6000 4700 6000 4275
+Wire Wire Line
+	6100 4350 6100 4275
+Wire Wire Line
+	5300 3375 5300 3300
+Wire Wire Line
+	5400 3375 5400 3000
+Wire Wire Line
+	5500 3375 5500 3300
+Wire Wire Line
+	5600 3375 5600 3000
+Wire Wire Line
+	5900 3375 5900 3300
+Wire Wire Line
+	6000 3375 6000 3000
+Wire Wire Line
+	6100 3375 6100 3300
+Wire Wire Line
+	6575 4350 6575 4275
+Wire Wire Line
+	6675 4275 6675 4700
+Wire Wire Line
+	6775 4350 6775 4275
+Wire Wire Line
+	6875 4275 6875 4700
+Wire Wire Line
+	6975 4350 6975 4275
+Wire Wire Line
+	7075 4275 7075 4700
+Wire Wire Line
+	7175 4350 7175 4275
+Wire Wire Line
+	7275 4700 7275 4275
+Wire Wire Line
+	7375 4350 7375 4275
+Wire Wire Line
+	6575 3375 6575 3300
+Wire Wire Line
+	6675 3375 6675 3000
+Wire Wire Line
+	6775 3375 6775 3300
+Wire Wire Line
+	6875 3375 6875 3000
+Wire Wire Line
+	7175 3375 7175 3300
+Wire Wire Line
+	7275 3375 7275 3000
+Wire Wire Line
+	7375 3375 7375 3300
+Wire Wire Line
+	4375 3350 4375 3275
+Wire Wire Line
+	4475 3350 4475 2975
+Wire Wire Line
+	5700 3375 5700 3300
+Wire Wire Line
+	5800 3375 5800 3000
+Wire Wire Line
+	6975 3375 6975 3300
+Wire Wire Line
+	7075 3375 7075 3000
+Wire Wire Line
+	5400 2300 5400 2250
+Wire Wire Line
+	5400 2250 5450 2250
+Wire Wire Line
+	5450 2250 5450 2200
+Wire Wire Line
+	5525 2300 5525 2250
+Wire Wire Line
+	5525 2250 5550 2250
+Wire Wire Line
+	5550 2250 5550 2200
+Wire Wire Line
+	5650 2200 5650 2300
+Wire Wire Line
+	5750 2200 5750 2250
+Wire Wire Line
+	5750 2250 5775 2250
+Wire Wire Line
+	5775 2250 5775 2300
+Wire Wire Line
+	5850 2200 5850 2250
+Wire Wire Line
+	5850 2250 5900 2250
+Wire Wire Line
+	5900 2250 5900 2300
+Wire Wire Line
+	5950 2200 5950 2250
+Wire Wire Line
+	5950 2250 6025 2250
+Wire Wire Line
+	6025 2250 6025 2300
+Wire Wire Line
+	4250 5400 5125 5400
+Wire Wire Line
+	4250 6100 5125 6100
+Wire Wire Line
+	4375 5600 4375 5400
+Connection ~ 4375 5400
+Wire Wire Line
+	4375 5900 4375 6100
+Connection ~ 4375 6100
+Wire Wire Line
+	4550 5625 4550 5400
+Connection ~ 4550 5400
+Wire Wire Line
+	4550 5925 4550 6000
+Wire Wire Line
+	4550 6000 5125 6000
+NoConn ~ 5125 5900
+$Comp
+L CONN_01X03 P1
+U 1 1 55C684DF
+P 4100 2225
+F 0 "P1" H 4100 2425 50  0000 C CNN
+F 1 "DATA_IN" V 4200 2225 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 4100 2225 60  0001 C CNN
+F 3 "" H 4100 2225 60  0000 C CNN
+	1    4100 2225
+	-1   0    0    1   
+$EndComp
+Text GLabel 4450 2350 2    60   Input ~ 0
+CLK
+Text GLabel 4450 2225 2    60   Input ~ 0
+SDA
+Text GLabel 4450 2100 2    60   Input ~ 0
+SDL
+Wire Wire Line
+	4450 2350 4400 2350
+Wire Wire Line
+	4400 2350 4400 2325
+Wire Wire Line
+	4400 2325 4300 2325
+Wire Wire Line
+	4300 2225 4450 2225
+Wire Wire Line
+	4450 2100 4400 2100
+Wire Wire Line
+	4400 2100 4400 2125
+Wire Wire Line
+	4400 2125 4300 2125
+Text GLabel 5075 5500 0    60   Input ~ 0
+SDA
+Text GLabel 4850 5600 0    60   Input ~ 0
+CLK
+Text GLabel 5075 5700 0    60   Input ~ 0
+SDL
+Wire Wire Line
+	5075 5500 5125 5500
+Wire Wire Line
+	4850 5600 5125 5600
+Wire Wire Line
+	5075 5700 5125 5700
+$Comp
+L GND #PWR03
+U 1 1 55C68AD3
+P 4950 5800
+F 0 "#PWR03" H 4950 5550 50  0001 C CNN
+F 1 "GND" H 4950 5650 50  0000 C CNN
+F 2 "" H 4950 5800 60  0000 C CNN
+F 3 "" H 4950 5800 60  0000 C CNN
+	1    4950 5800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 5800 5125 5800
+$Comp
+L CONN_01X02 P3
+U 1 1 55C68C10
+P 7275 2200
+F 0 "P3" H 7275 2350 50  0000 C CNN
+F 1 "LEDB_POWER" V 7375 2200 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 7275 2200 60  0001 C CNN
+F 3 "" H 7275 2200 60  0000 C CNN
+	1    7275 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L VDD #PWR04
+U 1 1 55C68CB4
+P 6675 2150
+F 0 "#PWR04" H 6675 2000 50  0001 C CNN
+F 1 "VDD" H 6675 2300 50  0000 C CNN
+F 2 "" H 6675 2150 60  0000 C CNN
+F 3 "" H 6675 2150 60  0000 C CNN
+	1    6675 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR05
+U 1 1 55C68CDA
+P 6675 2250
+F 0 "#PWR05" H 6675 2000 50  0001 C CNN
+F 1 "GND" H 6675 2100 50  0000 C CNN
+F 2 "" H 6675 2250 60  0000 C CNN
+F 3 "" H 6675 2250 60  0000 C CNN
+	1    6675 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6675 2250 7075 2250
+Wire Wire Line
+	7075 2150 6675 2150
+$Comp
+L PWR_FLAG #FLG06
+U 1 1 55C68F78
+P 6975 2125
+F 0 "#FLG06" H 6975 2220 50  0001 C CNN
+F 1 "PWR_FLAG" H 6975 2305 50  0000 C CNN
+F 2 "" H 6975 2125 60  0000 C CNN
+F 3 "" H 6975 2125 60  0000 C CNN
+	1    6975 2125
+	1    0    0    -1  
+$EndComp
+$Comp
+L PWR_FLAG #FLG07
+U 1 1 55C68F9E
+P 6975 2275
+F 0 "#FLG07" H 6975 2370 50  0001 C CNN
+F 1 "PWR_FLAG" H 6975 2455 50  0000 C CNN
+F 2 "" H 6975 2275 60  0000 C CNN
+F 3 "" H 6975 2275 60  0000 C CNN
+	1    6975 2275
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6975 2125 6975 2150
+Connection ~ 6975 2150
+Wire Wire Line
+	6975 2275 6975 2250
+Connection ~ 6975 2250
+$EndSCHEMATC
