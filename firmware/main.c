@@ -65,12 +65,6 @@ Digit* digits[10] = {
 
 volatile int time[6] = {0, 0, 0, 0, 0, 0};
 
-void delay_ms(uint16_t count) {
-  while (count--) {
-    _delay_ms(1);
-  }
-}
-
 #define CLOCK_LOW() (CLK_PORT &= ~(1 << CLK_PIN))
 #define CLOCK_HIGH() (CLK_PORT |= 1 << CLK_PIN)
 
