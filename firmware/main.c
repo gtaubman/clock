@@ -14,6 +14,12 @@
 // TODO(gtaubman): Get rid of this.
 #define LED_PIN 0
 
+// Ports for serial clock, data, and latch.
+#define SDA_PORT PORTD
+#define CLK_PORT PORTD
+#define SDL_PORT PORTD
+
+// Pins for serial clock, data, and latch.
 #define SDA_PIN 1
 #define CLK_PIN 2
 #define SDL_PIN 3
@@ -64,14 +70,14 @@ void delay_ms(uint16_t count) {
   }
 }
 
-#define CLOCK_LOW() (PORTD &= ~(1 << CLK_PIN))
-#define CLOCK_HIGH() (PORTD |= 1 << CLK_PIN)
+#define CLOCK_LOW() (CLK_PORT &= ~(1 << CLK_PIN))
+#define CLOCK_HIGH() (CLK_PORT |= 1 << CLK_PIN)
 
-#define DATA_LOW() (PORTD &= ~(1 << SDA_PIN))
-#define DATA_HIGH() (PORTD |= 1 << SDA_PIN)
+#define DATA_LOW() (SDA_PORT &= ~(1 << SDA_PIN))
+#define DATA_HIGH() (SDA_PORT |= 1 << SDA_PIN)
 
-#define LATCH_LOW() (PORTD &= ~(1 << SDL_PIN))
-#define LATCH_HIGH() (PORTD |= 1 << SDL_PIN)
+#define LATCH_LOW() (SDL_PORT &= ~(1 << SDL_PIN))
+#define LATCH_HIGH() (SDL_PORT |= 1 << SDL_PIN)
 
 void set_digit(int digit_number, int digit_value) {
   // Set the clock low to start with.
