@@ -11,7 +11,8 @@
 #include "i2cmaster.h"
 #include "rtc.h"
 
-// TODO(gtaubman): Get rid of this.
+// TODO(gtaubman): Get rid of this and decrement the pin numbers for SDA, CLK,
+// and SDL.
 #define LED_PIN 0
 
 // Ports for serial clock, data, and latch.
