@@ -6,8 +6,9 @@ This project contains KiCad board schematics, PCB layouts, and firmware for my
 digital clock.
 
 The clock features buttons to set the time, a hold button to aid in syncing the
-clock to another time source, and a switch to change the seconds digits to
-display the temperature instead of the current seconds.
+clock to another time source, and a switch to toggle the right-most display
+between showing seconds and the current temperature as reported by the real-time
+clock.
 
 The clock is divided into two PCBs:
 
