@@ -14,6 +14,18 @@ The clock is divided into two PCBs:
 
 ## The LED Board
 
+Schematic:
+
+![LED Board
+Schematic](https://raw.githubusercontent.com/gtaubman/clock/master/images/led_schematic.png)
+
+PCB Layout:
+
+![LED Board
+PCB](https://raw.githubusercontent.com/gtaubman/clock/master/images/led_pcb.png)
+
+PCB fabricated by OSH Park:
+
 ![LED Board](https://raw.githubusercontent.com/gtaubman/clock/master/images/led_board_bare.jpg)
 
 This board contains:
