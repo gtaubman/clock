@@ -140,8 +140,9 @@ int main(void) {
         time[1] = sec % 10;
 
         // If the hours tens place is zero, don't show it at all.  We don't want
-        // it to be 08:00:00, just 8:00:00.
-        if (time[0] == 0) {
+        // it to be 08:00:00, just 8:00:00.  However, if both hour digits are
+        // zero, then we want to show them both.
+        if (time[0] == 0 && time[1] != 0) {
           time[0] = -1;
         }
       }
