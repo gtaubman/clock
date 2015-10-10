@@ -584,7 +584,7 @@ U 1 1 55C9B96D
 P 5075 3075
 F 0 "R4" V 5155 3075 50  0000 C CNN
 F 1 "4.7k" V 5075 3075 50  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 5005 3075 30  0001 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 5005 3075 30  0001 C CNN
 F 3 "" H 5075 3075 30  0000 C CNN
 	1    5075 3075
 	0    1    1    0   
@@ -595,7 +595,7 @@ U 1 1 55C9B9D9
 P 5075 2925
 F 0 "R3" V 5155 2925 50  0000 C CNN
 F 1 "4.7k" V 5075 2925 50  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 5005 2925 30  0001 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 5005 2925 30  0001 C CNN
 F 3 "" H 5075 2925 30  0000 C CNN
 	1    5075 2925
 	0    1    1    0   
