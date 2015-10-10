@@ -617,7 +617,7 @@ U 1 1 55C9FAEE
 P 9650 925
 F 0 "C7" H 9675 1025 50  0000 L CNN
 F 1 "10uF" H 9350 925 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5" H 9688 775 30  0001 C CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 9688 775 30  0001 C CNN
 F 3 "" H 9650 925 60  0000 C CNN
 	1    9650 925 
 	1    0    0    -1  

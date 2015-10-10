@@ -1,4 +1,4 @@
-(pcb /Volumes/Jumbo/Users/gtaubman/Desktop/cb2/cb2.dsn
+(pcb /Volumes/Jumbo/Users/gtaubman/Desktop/clock/clock_board/cb2.dsn
   (parser
     (string_quote ")
     (space_in_quoted_tokens on)
@@ -24,8 +24,6 @@
       (path pcb 0  66040 -139700  66040 -101600  176530 -101600  176530 -139700
             66040 -139700  66040 -139700)
     )
-    (keepout "" (polygon B.Cu 0  139700 -120650  127000 -120650  127000 -115570  139700 -115570))
-    (keepout "" (polygon F.Cu 0  139700 -120650  127000 -120650  127000 -115570  139700 -115570))
     (via "Via[0-1]_600:400_um")
     (rule
       (width 250)
@@ -35,27 +33,39 @@
     )
   )
   (placement
+    (component Resistors_ThroughHole:Resistor_Horizontal_RM10mm
+      (place R7 93980 -120650 front 90 (PN 1k))
+      (place R1 82550 -120650 front 90 (PN 200))
+      (place R2 152400 -132080 front 270 (PN 10k))
+      (place R3 128905 -120650 front 270 (PN 4.7k))
+      (place R4 132715 -120650 front 270 (PN 4.7k))
+      (place R5 87630 -120650 front 90 (PN 1k))
+      (place R6 90805 -120650 front 90 (PN 1k))
+      (place R8 97155 -120650 front 90 (PN 1k))
+      (place R9 100330 -120650 front 90 (PN 1k))
+      (place R10 103505 -120650 front 90 (PN 1k))
+    )
     (component Capacitors_ThroughHole:C_Disc_D3_P2.5
-      (place C1 110490 -106680 front 90 (PN 0.1uF))
-      (place C5 156210 -104140 front 180 (PN 0.1uF))
-      (place C2 110490 -113030 front 90 (PN 0.1uF))
-      (place C6 135890 -124460 front 180 (PN 0.1uF))
+      (place C1 139065 -121920 front 270 (PN 0.1uF))
+      (place C5 157480 -128270 front 180 (PN 0.1uF))
+      (place C2 139065 -116840 front 270 (PN 0.1uF))
+      (place C6 116840 -121920 front 270 (PN 0.1uF))
     )
     (component "LEDs:LED-3MM"
-      (place D1 68580 -111760 front 0 (PN LED))
+      (place D1 78105 -119380 front 270 (PN LED))
     )
     (component "Housings_DIP:DIP-28_W7.62mm"
-      (place IC1 115570 -111760 front 90 (PN "ATMEGA328-P"))
+      (place IC1 149860 -137160 front 180 (PN "ATMEGA328-P"))
     )
     (component Pin_Headers:Pin_Header_Straight_2x03
-      (place P2 77470 -114300 front 0 (PN PROGRAMMER))
+      (place P2 135255 -104775 front 0 (PN PROGRAMMER))
     )
     (component "Connect:PINHEAD1-2"
       (place P3 172720 -104140 front 0 (PN BATT_CONN))
     )
     (component Pin_Headers:Pin_Header_Straight_1x02
       (place P4 171450 -137160 front 90 (PN LEDB_POWER))
-      (place P1 69850 -105410 front 90 (PN POWER))
+      (place P1 116840 -104140 front 90 (PN POWER))
     )
     (component Pin_Headers:Pin_Header_Straight_1x03
       (place P5 77470 -137160 front 90 (PN LCD_CLK_CONN))
@@ -71,39 +81,26 @@
       (place Q5 113030 -130810 front 0 (PN DGT5))
       (place Q6 119380 -130810 front 0 (PN DGT6))
     )
-    (component Resistors_ThroughHole:Resistor_Horizontal_RM10mm
-      (place R1 80010 -110490 front 0 (PN 200))
-      (place R2 69850 -130810 front 90 (PN 10k))
-      (place R3 78740 -128270 front 180 (PN 4.7k))
-      (place R4 78740 -124460 front 180 (PN 4.7k))
-      (place R5 88900 -120650 front 90 (PN 1k))
-      (place R6 95250 -120650 front 90 (PN 1k))
-      (place R7 101600 -120650 front 90 (PN 1k))
-      (place R8 107950 -120650 front 90 (PN 1k))
-      (place R9 114300 -120650 front 90 (PN 1k))
-      (place R10 120650 -120650 front 90 (PN 1k))
-    )
     (component Buttons_Switches_ThroughHole:SW_PUSH_SMALL
       (place SW1 166370 -110490 front 0 (PN HOUR_BTN))
       (place SW2 166370 -120650 front 0 (PN MIN_BTN))
       (place SW3 166370 -130810 front 0 (PN SEC_BTN))
       (place SW4 156210 -110490 front 0 (PN HOLD_BTN))
       (place SW5 156210 -120650 front 0 (PN RST_uC))
-      (place SW6 156210 -130810 front 0 (PN RESET_CLOCK))
     )
     (component "Power_Integrations:TO-220"
-      (place U1 80010 -106680 front 0 (PN 7805))
+      (place U1 118745 -109855 front 0 (PN 7805))
     )
     (component "SMD_Packages:SO-16-N"
-      (place U2 133350 -118110 back 0 (PN DS3231))
+      (place U2 130810 -134620 front 180 (PN DS3231))
     )
     (component "Housings_DIP:DIP-16_W7.62mm"
-      (place U3 140970 -118110 front 0 (PN 74HC595))
+      (place U3 85090 -111125 front 90 (PN 74HC595))
     )
     (component Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5
-      (place C3 91440 -106680 front 0 (PN 10uF))
-      (place C4 100330 -106680 front 0 (PN 10uF))
-      (place C7 133350 -135890 front 0 (PN 10uF))
+      (place C3 108585 -105410 front 0 (PN 10uF))
+      (place C4 127000 -105410 front 0 (PN 10uF))
+      (place C7 156210 -135255 front 0 (PN 10uF))
     )
     (component Connect:1pin
       (place REF1 68580 -120650 front 0 (PN 1pin))
@@ -111,6 +108,16 @@
     )
   )
   (library
+    (image Resistors_ThroughHole:Resistor_Horizontal_RM10mm
+      (outline (path signal 150  -2540 1270  2540 1270))
+      (outline (path signal 150  2540 1270  2540 -1270))
+      (outline (path signal 150  2540 -1270  -2540 -1270))
+      (outline (path signal 150  -2540 -1270  -2540 1270))
+      (outline (path signal 150  -2540 0  -3810 0))
+      (outline (path signal 150  2540 0  3810 0))
+      (pin Round[A]Pad_1998.98_um 1 -5080 0)
+      (pin Round[A]Pad_1998.98_um 2 5080 0)
+    )
     (image Capacitors_ThroughHole:C_Disc_D3_P2.5
       (outline (path signal 50  -900 1500  3400 1500))
       (outline (path signal 50  3400 1500  3400 -1500))
@@ -261,16 +268,6 @@
       (pin Oval[A]Pad_899.16x1501.14_um (rotate 180) 2 1270 0)
       (pin Oval[A]Pad_899.16x1501.14_um (rotate 180) 3 2540 0)
       (pin Oval[A]Pad_899.16x1501.14_um (rotate 180) 1 0 0)
-    )
-    (image Resistors_ThroughHole:Resistor_Horizontal_RM10mm
-      (outline (path signal 150  -2540 1270  2540 1270))
-      (outline (path signal 150  2540 1270  2540 -1270))
-      (outline (path signal 150  2540 -1270  -2540 -1270))
-      (outline (path signal 150  -2540 -1270  -2540 1270))
-      (outline (path signal 150  -2540 0  -3810 0))
-      (outline (path signal 150  2540 0  3810 0))
-      (pin Round[A]Pad_1998.98_um 1 -5080 0)
-      (pin Round[A]Pad_1998.98_um 2 5080 0)
     )
     (image Buttons_Switches_ThroughHole:SW_PUSH_SMALL
       (outline (path signal 150  2540 0  2415.68 -784.903  2054.9 -1492.97  1492.97 -2054.9
@@ -481,15 +478,6 @@
     )
   )
   (network
-    (net VCC
-      (pins C1-1 IC1-7 IC1-20 IC1-21 P4-1 Q1-2 Q2-2 Q3-2 Q4-2 Q5-2 Q6-2 R1-2 R2-1
-        R3-1 R4-1 SW6-1 SW6-1@1 U1-3 U2-4 U2-2 U3-10 U3-16 C2-1 C4-1 C6-1 C7-1)
-    )
-    (net GND
-      (pins C1-2 D1-1 IC1-8 IC1-22 P3-2 P4-2 SW1-1 SW1-1@1 SW2-1 SW2-1@1 SW3-1 SW3-1@1
-        SW4-1 SW4-1@1 SW5-1 SW5-1@1 SW6-2 SW6-2@1 U1-2 U2-13 U2-12 U2-11 U2-10 U2-9
-        U2-8 U2-7 U2-6 U2-5 U3-8 U3-13 C5-1 P1-2 C2-2 C3-2 C4-2 C6-2 C7-2)
-    )
     (net "Net-(D1-Pad2)"
       (pins D1-2 R1-1)
     )
@@ -557,10 +545,13 @@
       (pins IC1-28)
     )
     (net PROG_VCC
-      (pins P2-2)
+      (pins C1-1 IC1-7 IC1-20 IC1-21 P2-2 P4-1 Q1-2 Q2-2 Q3-2 Q4-2 Q5-2 Q6-2 R1-2
+        R2-1 R3-1 R4-1 U1-3 U2-4 U2-2 U3-10 U3-16 C2-1 C4-1 C6-1 C7-1)
     )
     (net PROG_GND
-      (pins P2-6)
+      (pins C1-2 D1-1 IC1-8 IC1-22 P2-6 P3-2 P4-2 SW1-1 SW1-1@1 SW2-1 SW2-1@1 SW3-1
+        SW3-1@1 SW4-1 SW4-1@1 SW5-1 SW5-1@1 U1-2 U2-13 U2-12 U2-11 U2-10 U2-9 U2-8
+        U2-7 U2-6 U2-5 U3-8 U3-13 C5-1 P1-2 C2-2 C3-2 C4-2 C6-2 C7-2)
     )
     (net "Net-(P3-Pad1)"
       (pins P3-1 U2-14)
@@ -575,7 +566,7 @@
       (pins Q2-1 R6-1)
     )
     (net "Net-(Q3-Pad1)"
-      (pins Q3-1 R7-1)
+      (pins R7-1 Q3-1)
     )
     (net "Net-(Q4-Pad1)"
       (pins Q4-1 R8-1)
@@ -657,7 +648,7 @@
         (clearance 200.1)
       )
     )
-    (class POWER /DIG1 /DIG2 /DIG3 /DIG4 /DIG5 /DIG6 GND VCC
+    (class POWER /DIG1 /DIG2 /DIG3 /DIG4 /DIG5 /DIG6
       (circuit
         (use_via Via[0-1]_600:400_um)
       )
@@ -668,16 +659,5 @@
     )
   )
   (wiring
-    (wire (path F.Cu 500  133350 -104140  135890 -104140)(net VCC)(type protect))
-    (wire (path F.Cu 500  110490 -106680  130810 -106680  133350 -104140)(net VCC)(type protect))
-    (wire (path F.Cu 500  110490 -113030  129540 -113030  130810 -111760)(net VCC)(type protect))
-    (wire (path F.Cu 500  171450 -137160  134620 -137160  133350 -135890)(net VCC)(type protect))
-    (wire (path F.Cu 500  110490 -104180  111700 -105390  121250 -105390  121940 -104700
-            121940 -103540  122590 -102890  129560 -102890  130010 -103340
-            130810 -104140)(net GND)(type protect))
-    (wire (path F.Cu 500  110490 -110530  111140 -109880  131470 -109880  132550 -110960
-            133350 -111760)(net GND)(type protect))
-    (wire (path F.Cu 500  173990 -137160  172974 -136144  172974 -135842  171772 -134640
-            137140 -134640  136641 -135139  135890 -135890)(net GND)(type protect))
   )
 )
