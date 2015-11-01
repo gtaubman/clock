@@ -146,8 +146,6 @@ uint8_t rtc_enable_square_wave() {
   // Enable square wave output.
   control_register |= 0x40;
 
-  control_register = 0x40;
-
   if (i2c_start(RTC_ADDRESS) != 0) {
     return 2;
   }
