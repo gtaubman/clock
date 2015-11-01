@@ -179,6 +179,7 @@ int main(void) {
   while (1) {
     if (update_time) {
       update_time = 0;
+      set_digit(5, 10);
       set_time();
     }
 
