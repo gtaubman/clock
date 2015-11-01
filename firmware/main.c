@@ -5,15 +5,12 @@
  */
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
 #include <util/twi.h>
 
 #include "i2cmaster.h"
 #include "rtc.h"
-
-// TODO(gtaubman): Get rid of this and decrement the pin numbers for SDA, CLK,
-// and SDL.
-#define LED_PIN 0
 
 // Ports for serial clock, data, and latch.
 #define SDA_PORT PORTD
@@ -21,9 +18,11 @@
 #define SDL_PORT PORTD
 
 // Pins for serial clock, data, and latch.
-#define SDA_PIN 1
-#define CLK_PIN 2
-#define SDL_PIN 3
+#define SDA_PIN 0
+#define CLK_PIN 1
+#define SDL_PIN 2
+
+#define RTC_INTERRUPT_PIN 3
 
 typedef struct digit {
   unsigned int a : 1;
@@ -50,7 +49,7 @@ Digit nine =  {1, 1, 1, 0, 0, 1, 1, 0};
 Digit clear = {0, 0, 0, 0, 0, 0, 0, 0};
 
 // A lookup table from actual integer to 7-segment display integer.
-Digit* digits[10] = {
+Digit* digits[11] = {
   &zero,
   &one,
   &two,
@@ -61,7 +60,10 @@ Digit* digits[10] = {
   &seven,
   &eight,
   &nine,
+  &clear,
 };
+
+volatile uint8_t update_time = 0;
 
 volatile int time[6] = {0, 0, 0, 0, 0, 0};
 
@@ -100,62 +102,84 @@ void set_digit(int digit_number, int digit_value) {
   LATCH_LOW();
 }
 
-int main(void) {
-  // TODO(gtaubman): Remove.
-  DDRD |= 1 << LED_PIN;  // Make the LED an output pin.
+inline void set_time() {
+  uint8_t sec = 0;
+  if (rtc_read_seconds(&sec) != 0) {
+    time[4] = time[5] = 9;
+  } else {
+    time[4] = sec / 10;
+    time[5] = sec % 10;
+  }
+  if (rtc_read_minutes(&sec) != 0) {
+    time[2] = time[3] = 9;
+  } else {
+    time[2] = sec / 10;
+    time[3] = sec % 10;
+  }
+  if (rtc_read_hours(&sec) != 0) {
+    time[0] = time[1] = 9;
+  } else {
+    time[0] = sec / 10;
+    time[1] = sec % 10;
 
+    // If the hours tens place is zero, don't show it at all.  We don't want
+    // it to be 08:00:00, just 8:00:00.  However, if both hour digits are
+    // zero, then we want to show them both.
+    if (time[0] == 0 && time[1] != 0) {
+      time[0] = -1;
+    }
+  }
+
+#ifdef TEMP_INSTEAD_OF_SECS
+  if (rtc_read_temp_c(&sec) != 0) {
+    time[4] = time[5] = 9;
+  } else {
+    sec = 32 + (sec * 9.0 / 5.0);
+    time[4] = sec / 10;
+    time[5] = sec % 10;
+  }
+#endif
+}
+
+int main(void) {
   // Make the serial control ports all output pins.
   DDRD |= 1 << SDA_PIN;
   DDRD |= 1 << CLK_PIN;
   DDRD |= 1 << SDL_PIN;
 
+  // Enable interrupts for both rising and falling edges on the RTC interrupt
+  // pin.
+  // First we mark the pin as an input pin.
+  DDRD &= ~(1 << RTC_INTERRUPT_PIN);
+
+  // Next we enable the internal pullup.
+  PORTD |= (1 << RTC_INTERRUPT_PIN);
+
+  // The DS3231 has a falling edge of its 1 Hz square wave lined up with second
+  // changes, so we only trigger on falling edges.
+  EICRA |= (1 << ISC11);
+
+  // Finally, enable INT1.
+  EIMSK |= (1 << INT1);
+
   // Initialize our i2c interface to talk to the DS3231.
   i2c_init();
+
+  sei();
+
 
 #ifdef SET_TIME
   rtc_set_time(10, 17, 5);
 #endif
 
-  int count = 0;
-  uint8_t sec = 0;
+  if (rtc_enable_square_wave() != 0) {
+    return -1;
+  }
+
   while (1) {
-    if (++count == 100) {
-      count = 0;
-      if (rtc_read_seconds(&sec) != 0) {
-        time[4] = time[5] = 9;
-      } else {
-        time[4] = sec / 10;
-        time[5] = sec % 10;
-      }
-      if (rtc_read_minutes(&sec) != 0) {
-        time[2] = time[3] = 9;
-      } else {
-        time[2] = sec / 10;
-        time[3] = sec % 10;
-      }
-      if (rtc_read_hours(&sec) != 0) {
-        time[0] = time[1] = 9;
-      } else {
-        time[0] = sec / 10;
-        time[1] = sec % 10;
-
-        // If the hours tens place is zero, don't show it at all.  We don't want
-        // it to be 08:00:00, just 8:00:00.  However, if both hour digits are
-        // zero, then we want to show them both.
-        if (time[0] == 0 && time[1] != 0) {
-          time[0] = -1;
-        }
-      }
-
-#ifdef TEMP_INSTEAD_OF_SECS
-      if (rtc_read_temp_c(&sec) != 0) {
-        time[4] = time[5] = 9;
-      } else {
-        sec = 32 + (sec * 9.0 / 5.0);
-        time[4] = sec / 10;
-        time[5] = sec % 10;
-      }
-#endif
+    if (update_time) {
+      update_time = 0;
+      set_time();
     }
 
     // Loop through and display all the digits.
@@ -166,4 +190,8 @@ int main(void) {
   }
 
   return 0;
+}
+
+ISR(INT1_vect) {
+  update_time = 1;
 }

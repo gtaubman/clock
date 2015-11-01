@@ -410,7 +410,7 @@ U 1 1 55BE63AA
 P 5575 5550
 F 0 "U2" H 5575 5100 60  0000 C CNN
 F 1 "DS3231" H 5575 5550 60  0000 C CNN
-F 2 "SMD_Packages:SO-16-N" H 5625 5400 60  0001 C CNN
+F 2 "Housings_SOIC:SOIC-16_7.5x10.3mm_Pitch1.27mm" H 5625 5400 60  0001 C CNN
 F 3 "" H 5625 5400 60  0000 C CNN
 	1    5575 5550
 	1    0    0    -1  
@@ -445,7 +445,6 @@ Text GLabel 6625 5325 2    60   Input ~ 0
 I2C_DATA
 Text GLabel 4850 3375 2    60   Input ~ 0
 I2C_DATA
-NoConn ~ 4925 5400
 $Comp
 L C C2
 U 1 1 55C925BA
@@ -551,7 +550,7 @@ U 1 1 55C9921C
 P 7300 5850
 F 0 "P3" H 7300 6000 50  0000 C CNN
 F 1 "BATT_CONN" V 7400 5850 50  0000 C CNN
-F 2 "Connect:PINHEAD1-2" H 7300 5850 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 7300 5850 60  0001 C CNN
 F 3 "" H 7300 5850 60  0000 C CNN
 	1    7300 5850
 	1    0    0    -1  
@@ -584,7 +583,7 @@ U 1 1 55C9B96D
 P 5075 3075
 F 0 "R4" V 5155 3075 50  0000 C CNN
 F 1 "4.7k" V 5075 3075 50  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 5005 3075 30  0001 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 5005 3075 30  0001 C CNN
 F 3 "" H 5075 3075 30  0000 C CNN
 	1    5075 3075
 	0    1    1    0   
@@ -595,7 +594,7 @@ U 1 1 55C9B9D9
 P 5075 2925
 F 0 "R3" V 5155 2925 50  0000 C CNN
 F 1 "4.7k" V 5075 2925 50  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 5005 2925 30  0001 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 5005 2925 30  0001 C CNN
 F 3 "" H 5075 2925 30  0000 C CNN
 	1    5075 2925
 	0    1    1    0   
@@ -617,7 +616,7 @@ U 1 1 55C9FAEE
 P 9650 925
 F 0 "C7" H 9675 1025 50  0000 L CNN
 F 1 "10uF" H 9350 925 50  0000 L CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5" H 9688 775 30  0001 C CNN
+F 2 "Capacitors_Elko_ThroughHole:Elko_vert_11.2x6.3mm_RM2.5" H 9688 775 30  0001 C CNN
 F 3 "" H 9650 925 60  0000 C CNN
 	1    9650 925 
 	1    0    0    -1  
@@ -993,16 +992,6 @@ Wire Wire Line
 	5275 3075 5225 3075
 Connection ~ 5275 2925
 Wire Wire Line
-	3000 4325 3425 4325
-Wire Wire Line
-	3425 4325 3425 5200
-Wire Wire Line
-	3425 5200 4925 5200
-Wire Wire Line
-	3000 4225 3050 4225
-Wire Wire Line
-	3050 4225 3050 5625
-Wire Wire Line
 	3000 4425 3100 4425
 Wire Wire Line
 	3100 4425 3100 6050
@@ -1216,4 +1205,18 @@ Wire Wire Line
 Connection ~ 3750 1200
 Wire Wire Line
 	4550 6225 7100 6225
+Wire Wire Line
+	3000 4225 3050 4225
+Wire Wire Line
+	3050 4225 3050 4250
+Wire Wire Line
+	3050 4250 3675 4250
+Wire Wire Line
+	3675 4250 3675 4475
+Wire Wire Line
+	3675 4475 4825 4475
+Wire Wire Line
+	4825 4475 4825 5400
+Wire Wire Line
+	4825 5400 4925 5400
 $EndSCHEMATC
