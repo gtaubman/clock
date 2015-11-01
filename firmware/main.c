@@ -179,7 +179,15 @@ int main(void) {
   while (1) {
     if (update_time) {
       update_time = 0;
+
+      // Because set_time() takes time to fetch the time from the DS3231, the
+      // last digit in the cycle would be left on for extra time (the normal
+      // amount of time plus however long it takes to fetch the time from the
+      // DS3231).  This would result it pulsing brighter.  To keep it the same
+      // brightness regardless of whether or not we fetch the time, we disable
+      // it before fetching the time.
       set_digit(5, 10);
+
       set_time();
     }
 
