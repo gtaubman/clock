@@ -17,4 +17,8 @@ void rtc_disable_square_wave();
 
 uint8_t rtc_read_reg(uint8_t reg, uint8_t* val);
 
+uint8_t rtc_inc_hours();
+uint8_t rtc_inc_mins();
+uint8_t rtc_inc_secs();
+
 #endif

@@ -165,3 +165,42 @@ uint8_t rtc_enable_square_wave() {
 
 void rtc_disable_square_wave() {
 }
+
+uint8_t rtc_inc_hours() {
+  uint8_t hours;
+  if (rtc_read_hours(&hours) != 0) {
+    return 1;
+  }
+
+  if (rtc_write_reg(HOURS_ADDRESS, dec2bcd((hours + 1) % 24)) != 0) {
+    return 2;
+  }
+
+  return 0;
+}
+
+uint8_t rtc_inc_mins() {
+  uint8_t mins;
+  if (rtc_read_minutes(&mins) != 0) {
+    return 1;
+  }
+
+  if (rtc_write_reg(MINUTES_ADDRESS, dec2bcd((mins + 1) % 60)) != 0) {
+    return 2;
+  }
+
+  return 0;
+}
+
+uint8_t rtc_inc_secs() {
+  uint8_t secs;
+  if (rtc_read_seconds(&secs) != 0) {
+    return 1;
+  }
+
+  if (rtc_write_reg(SECONDS_ADDRESS, dec2bcd((secs + 1) % 60)) != 0) {
+    return 2;
+  }
+
+  return 0;
+}

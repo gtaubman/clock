@@ -9,6 +9,7 @@
 #include <util/delay.h>
 #include <util/twi.h>
 
+#include "button.h"
 #include "i2cmaster.h"
 #include "rtc.h"
 
@@ -23,6 +24,10 @@
 #define SDL_PIN 2
 
 #define RTC_INTERRUPT_PIN 3
+
+#define HOUR_BTN_PIN 4
+#define MIN_BTN_PIN 5
+#define SEC_BTN_PIN 6
 
 typedef struct digit {
   unsigned int a : 1;
@@ -66,6 +71,10 @@ Digit* digits[11] = {
 volatile uint8_t update_time = 0;
 
 volatile int time[6] = {0, 0, 0, 0, 0, 0};
+
+Button hour_button;
+Button min_button;
+Button sec_button;
 
 #define CLOCK_LOW() (CLK_PORT &= ~(1 << CLK_PIN))
 #define CLOCK_HIGH() (CLK_PORT |= 1 << CLK_PIN)
@@ -147,6 +156,17 @@ int main(void) {
   DDRD |= 1 << CLK_PIN;
   DDRD |= 1 << SDL_PIN;
 
+  // Set up the hour, minute, and seconds button pins as inputs with the pullup
+  // enabled.
+  DDRD &= ~(1 << HOUR_BTN_PIN);
+  PORTD |= (1 << HOUR_BTN_PIN);
+
+  DDRD &= ~(1 << MIN_BTN_PIN);
+  PORTD |= (1 << MIN_BTN_PIN);
+
+  DDRD &= ~(1 << SEC_BTN_PIN);
+  PORTD |= (1 << SEC_BTN_PIN);
+
   // Enable interrupts for both rising and falling edges on the RTC interrupt
   // pin.
   // First we mark the pin as an input pin.
@@ -166,7 +186,6 @@ int main(void) {
   i2c_init();
 
   sei();
-
 
 #ifdef SET_TIME
   rtc_set_time(10, 17, 5);
@@ -188,6 +207,27 @@ int main(void) {
       // it before fetching the time.
       set_digit(5, 10);
 
+      set_time();
+    }
+
+    set_button(&hour_button, (PIND & (1 << HOUR_BTN_PIN)) == 0);
+    if (is_button_set(&hour_button)) {
+      // They hit the hours button.
+      rtc_inc_hours();
+      set_time();
+    }
+
+    set_button(&min_button, (PIND & (1 << MIN_BTN_PIN)) == 0);
+    if (is_button_set(&min_button)) {
+      // They hit the mins button.
+      rtc_inc_mins();
+      set_time();
+    }
+
+    set_button(&sec_button, (PIND & (1 << SEC_BTN_PIN)) == 0);
+    if (is_button_set(&sec_button)) {
+      // They hit the secs button.
+      rtc_inc_secs();
       set_time();
     }
 
