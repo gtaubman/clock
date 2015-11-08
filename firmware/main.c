@@ -75,6 +75,7 @@ volatile int time[6] = {0, 0, 0, 0, 0, 0};
 Button hour_button;
 Button min_button;
 Button sec_button;
+uint8_t holding;
 
 #define CLOCK_LOW() (CLK_PORT &= ~(1 << CLK_PIN))
 #define CLOCK_HIGH() (CLK_PORT |= 1 << CLK_PIN)
@@ -113,11 +114,13 @@ void set_digit(int digit_number, int digit_value) {
 
 inline void set_time() {
   uint8_t sec = 0;
-  if (rtc_read_seconds(&sec) != 0) {
-    time[4] = time[5] = 9;
-  } else {
-    time[4] = sec / 10;
-    time[5] = sec % 10;
+  if (!holding) {
+    if (rtc_read_seconds(&sec) != 0) {
+      time[4] = time[5] = 9;
+    } else {
+      time[4] = sec / 10;
+      time[5] = sec % 10;
+    }
   }
   if (rtc_read_minutes(&sec) != 0) {
     time[2] = time[3] = 9;
@@ -148,6 +151,31 @@ inline void set_time() {
     time[5] = sec % 10;
   }
 #endif
+}
+
+void process_button_input() {
+  set_button(&hour_button, (PIND & (1 << HOUR_BTN_PIN)) == 0);
+  if (is_button_set(&hour_button)) {
+    // They hit the hours button.
+    rtc_inc_hours();
+    set_time();
+  }
+
+  set_button(&min_button, (PIND & (1 << MIN_BTN_PIN)) == 0);
+  if (is_button_set(&min_button)) {
+    // They hit the mins button.
+    rtc_inc_mins();
+    set_time();
+  }
+
+  set_button(&sec_button, (PIND & (1 << SEC_BTN_PIN)) == 0);
+  if (is_button_set(&sec_button)) {
+    if (holding) {
+      // If we were holding, grab the held seconds and set them again.    
+      rtc_set_secs(10 * time[4] + time[5]);
+    }
+    holding = !holding;
+  }
 }
 
 int main(void) {
@@ -185,6 +213,8 @@ int main(void) {
   // Initialize our i2c interface to talk to the DS3231.
   i2c_init();
 
+  holding = 0;
+
   sei();
 
 #ifdef SET_TIME
@@ -210,26 +240,8 @@ int main(void) {
       set_time();
     }
 
-    set_button(&hour_button, (PIND & (1 << HOUR_BTN_PIN)) == 0);
-    if (is_button_set(&hour_button)) {
-      // They hit the hours button.
-      rtc_inc_hours();
-      set_time();
-    }
-
-    set_button(&min_button, (PIND & (1 << MIN_BTN_PIN)) == 0);
-    if (is_button_set(&min_button)) {
-      // They hit the mins button.
-      rtc_inc_mins();
-      set_time();
-    }
-
-    set_button(&sec_button, (PIND & (1 << SEC_BTN_PIN)) == 0);
-    if (is_button_set(&sec_button)) {
-      // They hit the secs button.
-      rtc_inc_secs();
-      set_time();
-    }
+    // Handle any buttons the user is pushing.
+    process_button_input();
 
     // Loop through and display all the digits.
     for (int i = 0; i < 6; ++i) {

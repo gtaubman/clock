@@ -21,4 +21,6 @@ uint8_t rtc_inc_hours();
 uint8_t rtc_inc_mins();
 uint8_t rtc_inc_secs();
 
+uint8_t rtc_set_secs(uint8_t secs);
+
 #endif

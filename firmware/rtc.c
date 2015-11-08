@@ -204,3 +204,7 @@ uint8_t rtc_inc_secs() {
 
   return 0;
 }
+
+uint8_t rtc_set_secs(uint8_t s) {
+  return rtc_write_reg(SECONDS_ADDRESS, dec2bcd(s));
+}
