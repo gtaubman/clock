@@ -154,22 +154,22 @@ inline void set_time() {
 }
 
 void process_button_input() {
-  set_button(&hour_button, (PIND & (1 << HOUR_BTN_PIN)) == 0);
-  if (is_button_set(&hour_button)) {
+  ingest_button_value(&hour_button, (PIND & (1 << HOUR_BTN_PIN)) == 0);
+  if (is_button_pushed(&hour_button)) {
     // They hit the hours button.
     rtc_inc_hours();
     set_time();
   }
 
-  set_button(&min_button, (PIND & (1 << MIN_BTN_PIN)) == 0);
-  if (is_button_set(&min_button)) {
+  ingest_button_value(&min_button, (PIND & (1 << MIN_BTN_PIN)) == 0);
+  if (is_button_pushed(&min_button)) {
     // They hit the mins button.
     rtc_inc_mins();
     set_time();
   }
 
-  set_button(&sec_button, (PIND & (1 << SEC_BTN_PIN)) == 0);
-  if (is_button_set(&sec_button)) {
+  ingest_button_value(&sec_button, (PIND & (1 << SEC_BTN_PIN)) == 0);
+  if (is_button_pushed(&sec_button)) {
     if (holding) {
       // If we were holding, grab the held seconds and set them again.    
       rtc_set_secs(10 * time[4] + time[5]);
