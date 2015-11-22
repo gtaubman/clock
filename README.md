@@ -39,6 +39,15 @@ This board contains:
 1.  2 pins for power and ground for the TLC5916.
 
 ## The Clock Board
+
+Schematic:
+
+![Clock Board Schematic](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_board_schematic.png)
+
+PCB Layout:
+
+![Clock Board PCB](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_board_pcb.png)
+
 The clock board is responsible for driving the entire clock logic, as well as
 interfacing with the real-time clock chip, and allowing user control over the
 clock functionality.  It consists of:
