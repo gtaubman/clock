@@ -48,6 +48,10 @@ PCB Layout:
 
 ![Clock Board PCB](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_board_pcb.png)
 
+PCB fabricated by OSH Park:
+
+![Clock Board](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_board_bare.jpg)
+
 The clock board is responsible for driving the entire clock logic, as well as
 interfacing with the real-time clock chip, and allowing user control over the
 clock functionality.  It consists of:
