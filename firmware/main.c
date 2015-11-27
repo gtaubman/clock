@@ -28,6 +28,7 @@
 #define HOUR_BTN_PIN 4
 #define MIN_BTN_PIN 5
 #define SEC_BTN_PIN 6
+#define TEMP_TOG_BTN_PIN 7
 
 typedef struct digit {
   unsigned int a : 1;
@@ -75,7 +76,9 @@ volatile int time[6] = {0, 0, 0, 0, 0, 0};
 Button hour_button;
 Button min_button;
 Button sec_button;
+Button temp_toggle_button;
 uint8_t holding;
+uint8_t show_temp;
 
 #define CLOCK_LOW() (CLK_PORT &= ~(1 << CLK_PIN))
 #define CLOCK_HIGH() (CLK_PORT |= 1 << CLK_PIN)
@@ -142,15 +145,15 @@ inline void set_time() {
     }
   }
 
-#ifdef TEMP_INSTEAD_OF_SECS
-  if (rtc_read_temp_c(&sec) != 0) {
-    time[4] = time[5] = 9;
-  } else {
-    sec = 32 + (sec * 9.0 / 5.0);
-    time[4] = sec / 10;
-    time[5] = sec % 10;
+  if (show_temp) {
+    if (rtc_read_temp_c(&sec) != 0) {
+      time[4] = time[5] = 9;
+    } else {
+      sec = 32 + (sec * 9.0 / 5.0);
+      time[4] = sec / 10;
+      time[5] = sec % 10;
+    }
   }
-#endif
 }
 
 void process_button_input() {
@@ -176,6 +179,13 @@ void process_button_input() {
     }
     holding = !holding;
   }
+
+  ingest_button_value(&temp_toggle_button,
+                      (PIND & (1 << TEMP_TOG_BTN_PIN)) == 0);
+  if (is_button_pushed(&temp_toggle_button)) {
+    show_temp = !show_temp;
+    set_time();
+  }
 }
 
 int main(void) {
@@ -194,6 +204,9 @@ int main(void) {
 
   DDRD &= ~(1 << SEC_BTN_PIN);
   PORTD |= (1 << SEC_BTN_PIN);
+
+  DDRD &= ~(1 << TEMP_TOG_BTN_PIN);
+  PORTD |= (1 << TEMP_TOG_BTN_PIN);
 
   // Enable interrupts for both rising and falling edges on the RTC interrupt
   // pin.
@@ -214,6 +227,7 @@ int main(void) {
   i2c_init();
 
   holding = 0;
+  show_temp = 0;
 
   sei();
 
