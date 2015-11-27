@@ -14,7 +14,7 @@ The clock is divided into two PCBs:
 
 ## The LED Board
 
-![LED Board Populated](https://raw.githubusercontent.com/gtaubman/clock/master/images/led_board_populated.png)
+![LED Board Populated](https://raw.githubusercontent.com/gtaubman/clock/master/images/led_board_populated.jpg)
 
 Schematic:
 
@@ -42,7 +42,7 @@ This board contains:
 
 ## The Clock Board
 
-![Clock Board Populated](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_board_populated.png)
+![Clock Board Populated](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_board_populated.jpg)
 
 Schematic:
 
