@@ -14,6 +14,8 @@ The clock is divided into two PCBs:
 
 ## The LED Board
 
+![LED Board Populated](https://raw.githubusercontent.com/gtaubman/clock/master/images/led_board_populated.png)
+
 Schematic:
 
 ![LED Board
@@ -39,6 +41,8 @@ This board contains:
 1.  2 pins for power and ground for the TLC5916.
 
 ## The Clock Board
+
+![Clock Board Populated](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_board_populated.png)
 
 Schematic:
 
