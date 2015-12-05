@@ -10,6 +10,8 @@ clock to another time source, and a switch to toggle the right-most display
 between showing seconds and the current temperature as reported by the real-time
 clock.
 
+![Clock In Case](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_case.jpg)
+
 The clock is divided into two PCBs:
 
 ## The LED Board
