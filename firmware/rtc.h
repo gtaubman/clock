@@ -23,4 +23,6 @@ uint8_t rtc_inc_secs();
 
 uint8_t rtc_set_secs(uint8_t secs);
 
+uint8_t rtc_set_24hour(uint8_t is_24_hour);
+
 #endif

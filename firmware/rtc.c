@@ -100,7 +100,19 @@ uint8_t rtc_read_minutes(uint8_t* minutes) {
 }
 
 uint8_t rtc_read_hours(uint8_t* hours) {
-  return rtc_read_bcd_reg(HOURS_ADDRESS, hours);
+  if (rtc_read_reg(HOURS_ADDRESS, hours) != 0) {
+    return 1;
+  }
+
+  if (*hours & (1 << 6)) {
+    // We're in 12 hour mode.  Remove the 5th bit which represents AM/PM and the
+    // 6th bit which says we're in 12 hour mode.
+    *hours &= ~(1 << 6);
+    *hours &= ~(1 << 5);
+  }
+  *hours = bcd2dec(*hours);
+
+  return 0;
 }
 
 uint8_t rtc_read_temp_c(uint8_t* temp_c) {
@@ -168,12 +180,23 @@ void rtc_disable_square_wave() {
 
 uint8_t rtc_inc_hours() {
   uint8_t hours;
-  if (rtc_read_hours(&hours) != 0) {
+  if (rtc_read_reg(HOURS_ADDRESS, &hours) != 0) {
     return 1;
   }
 
-  if (rtc_write_reg(HOURS_ADDRESS, dec2bcd((hours + 1) % 24)) != 0) {
-    return 2;
+  uint8_t is_24_hour = (hours & (1 << 6)) == 0;
+  if (is_24_hour) {
+    uint8_t time = bcd2dec(hours);
+    if (rtc_write_reg(HOURS_ADDRESS, dec2bcd((time + 1) % 24)) != 0) {
+      return 2;
+    }
+  } else {
+    uint8_t new_time = ((bcd2dec((hours & 0x1F)) + 1) % 13);
+    if (new_time == 0) {
+      new_time = 1;
+    }
+    rtc_write_reg(HOURS_ADDRESS,
+                  (hours & (1 << 6)) | (hours & (1 << 5)) | dec2bcd(new_time));
   }
 
   return 0;
@@ -207,4 +230,17 @@ uint8_t rtc_inc_secs() {
 
 uint8_t rtc_set_secs(uint8_t s) {
   return rtc_write_reg(SECONDS_ADDRESS, dec2bcd(s));
+}
+
+uint8_t rtc_set_24hour(uint8_t is_24_hour) {
+  uint8_t hours;
+  if (rtc_read_reg(HOURS_ADDRESS, &hours) != 0) {
+    return 1;
+  }
+
+  if (is_24_hour) {
+    return rtc_write_reg(HOURS_ADDRESS, hours & ~(1 << 6));
+  } else {
+    return rtc_write_reg(HOURS_ADDRESS, hours | (1 << 6));
+  }
 }

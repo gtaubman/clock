@@ -239,6 +239,11 @@ int main(void) {
     return -1;
   }
 
+  if (rtc_set_24hour(0) != 0) {
+    return -1;
+  }
+
+  uint8_t button_counter = 0;
   while (1) {
     if (update_time) {
       update_time = 0;
@@ -254,14 +259,18 @@ int main(void) {
       set_time();
     }
 
-    // Handle any buttons the user is pushing.
-    process_button_input();
+    if (++button_counter == 8) {
+      // Handle any buttons the user is pushing.
+      // In order to keep the digits on for the same amount of time, we only
+      // check for button presses every 8th time through the loop.
+      process_button_input();
+      button_counter = 0;
+    }
 
     // Loop through and display all the digits.
     for (int i = 0; i < 6; ++i) {
       set_digit(i, time[i]);
     }
-
   }
 
   return 0;
