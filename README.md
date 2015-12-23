@@ -10,6 +10,8 @@ clock to another time source, and a switch to toggle the right-most display
 between showing seconds and the current temperature as reported by the real-time
 clock.
 
+![Clock In Case](https://raw.githubusercontent.com/gtaubman/clock/master/images/clock_case.jpg)
+
 The clock is divided into two PCBs:
 
 ## The LED Board
@@ -62,4 +64,11 @@ clock functionality.  It consists of:
 
 1.  One Atmega 328pu running the show.
 1.  One DS3231 real-time clock, communicating with the AVR over i2c.
-1.  TODO(gtaubman): Rest of BOM.
+1.  One 74HC595 shift register to control which digit is powered on.
+1.  6 transistors to power on digits.
+1.  6 1k, 2 4.7k, and 2 10k resistors.
+1.  4 push buttons for setting the time and temperature display modes.
+1.  3 decoupling capacitors.
+1.  2 10uF capacitors and a 7805 voltage regulator for supplying power.
+1.  Pins to send power, data, and chip power to the LED board.
+1.  An optional LED to indicate when the board is powered on.
